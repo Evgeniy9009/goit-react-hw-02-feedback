@@ -2,12 +2,19 @@ import PropTypes from "prop-types"
 import css from "components/FeedbackOptions/FeedbackOptions.module.css"
 
 
-const FeedbackOptions = ({ onLeaveFeedback }) => {
+const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+    console.log(options)
+    const elements = options.map((name) => {
+
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+}
+        return (
+            <button key={name} className={css.btn} onClick={() => onLeaveFeedback(`${name}`)}>{capitalizeFirstLetter(name)}</button>
+    )})
     return (
         <>
-            <button className={css.btn} onClick={() => onLeaveFeedback("good")}>Good</button>
-            <button className={css.btn} onClick={ () => onLeaveFeedback("neutral")}>Neutral</button>
-            <button className={css.btn} onClick={ () => onLeaveFeedback("bad")} >Bad</button>        
+            {elements}
         </>
         
     )
@@ -16,5 +23,6 @@ const FeedbackOptions = ({ onLeaveFeedback }) => {
 export default FeedbackOptions
 
 FeedbackOptions.propTypes = {
-    onLeaveFeedback: PropTypes.func
+    options: PropTypes.array.isRequired,
+    onLeaveFeedback: PropTypes.func.isRequired
 }

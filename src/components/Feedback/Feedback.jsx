@@ -39,7 +39,7 @@ export default class Feedback extends Component {
         return (
             <>
                 <Section title='Please leave feedback'>
-                    <FeedbackOptions  onLeaveFeedback={this.onLeaveFeedback}/>
+                    <FeedbackOptions options={Object.keys(this.state)} onLeaveFeedback={this.onLeaveFeedback}/>
                 </Section>
                 <Section title='Statistics'>
                     {total === 0 ?
