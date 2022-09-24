@@ -51,8 +51,6 @@ export default class Feedback extends Component {
                         total={total}
                         positivePercentage={percent } />  }
                 </Section>
-
-
             </>
         )
     }
